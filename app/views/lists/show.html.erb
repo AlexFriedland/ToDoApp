@@ -2,17 +2,28 @@
   <section class="todoapp">
     <header class="header">
       <h1>To Do App</h1>
-      <input class="new-todo" placeholder="Create a New List" autofocus="">
+      <h2><%= @list.name %></h2>
+      <input class="new-todo" placeholder="Add items to your list" autofocus="">
     </header>
     <section class="main">
       <ul class="todo-list">
-        <% @lists.each do |list| %>
         <li>
           <div class="view">
-            <label><a href="#"><%= list.name %></a></label>
+            <label>milk</label>
           </div>
         </li>
-        <% end %>
+
+        <li>
+          <div class="view">
+            <label>eggs</label>
+          </div>
+        </li>
+
+        <li>
+          <div class="view">
+            <label>brix</label>
+          </div>
+        </li>
       </ul
 
     </section>
