@@ -6,21 +6,13 @@
     </header>
     <section class="main">
       <ul class="todo-list">
+        <% @lists.each do |list| %>
         <li>
           <div class="view">
-            <label><a href="#">List1</a></label>
+            <label><a href="#"><%= list.name %></a></label>
           </div>
         </li>
-        <li>
-          <div class="view">
-            <label><a href="#">List2</a></label>
-          </div>
-        </li>
-        <li>
-          <div class="view">
-            <label><a href="#">List3</a></label>
-          </div>
-        </li>
+        <% end %>
       </ul
 
     </section>
