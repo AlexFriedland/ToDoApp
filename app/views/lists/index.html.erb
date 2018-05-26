@@ -1,17 +1,17 @@
 	<section class="todoapp">
     <header class="header">
-      <h1>To Do App</h1>
+      <h1>To Do App - Your Lists</h1>
 
 				<%= form_for(List.new) do |f| %>
 					<%= f.text_field :name, :class => "new-todo", :placeholder => "Create New List"%>
 					<%= f.submit :style => "display: none" %>
 				<% end %>
-
+			</form>
     </header>
 
     <section class="main">
-
-
+			<input type="checkbox" class="toggle-all">
+			<label for="toggle-all">Mark all as complete</label>
 
       <ul class="todo-list">
         <% @lists.each do |list| %>
