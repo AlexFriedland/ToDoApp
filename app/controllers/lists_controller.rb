@@ -13,9 +13,16 @@ class ListsController < ApplicationController
   end
 
   def create
+    #validates name: for list
     #read activerecord strong_parameters
-    @list = List.create!(name: params[:list][:name])
-    redirect_to list_path(@list)
+    @list = List.new(list_params)
+    if @list.save
+      redirect_to list_url(@list)
+    else
+      @lists = List.all
+      flash[:notice] = "List not saved bc: #{@list.errors.full_messages[0]}"
+      render :index
+    end
   end
 
   private

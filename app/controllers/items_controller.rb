@@ -9,6 +9,13 @@ class ItemsController < ApplicationController
   end
 
   def create
+    #find the parents first
+    @list = List.find(params[:list_id])
+    #build directly on that parent
+    @item = @list.items.build(item_params)
+    @item.save
+    redirect_to list_path(@list)
+    
   end
 
   def update
@@ -17,5 +24,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
+    params.require(:item).permit(:description)
   end
 end

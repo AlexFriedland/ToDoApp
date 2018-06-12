@@ -5,8 +5,10 @@
 
       <!--  -->
 
-      <!-- see params with above, set proper with below  -->
-        <%= form_for(Item.new, url: list_items_path(@list)) do |f| %>
+      <!-- see params with raise / inspect, set proper with below  -->
+      <!-- nested resources form_for array, see list controller -->
+
+        <%= form_for([@list, @item]) do |f| %>
       <form action="/lists" method="POST">
           <%= f.text_field :description, :class => "new-todo"%>
           <%= f.submit :style => "display: none" %>
