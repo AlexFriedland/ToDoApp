@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2018_05_27_200656) do
   end
 
   create_table "td_items", force: :cascade do |t|
-    t.string "name"
+    t.string "description"
     t.integer "list_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

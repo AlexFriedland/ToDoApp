@@ -1,2 +1,0 @@
-class TdItemsController < ApplicationController
-end
