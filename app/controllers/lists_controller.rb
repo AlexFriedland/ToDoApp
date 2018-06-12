@@ -8,6 +8,7 @@ class ListsController < ApplicationController
   end
 
   def show
+    @item = @list.items.build
     @list = List.find_by(id: params[:id])
   end
 

@@ -3,27 +3,25 @@
     <header class="header">
       <h1><%= @list.name %></h1>
 
-      <input class="new-todo" placeholder="Add items to your list" autofocus="">
+      <!--  -->
+
+      <!-- see params with above, set proper with below  -->
+        <%= form_for(Item.new, url: list_items_path(@list)) do |f| %>
+      <form action="/lists" method="POST">
+          <%= f.text_field :description, :class => "new-todo"%>
+          <%= f.submit :style => "display: none" %>
+        <% end %>
+      </form>
     </header>
     <section class="main">
       <ul class="todo-list">
-        <li>
-          <div class="view">
-            <label>milk</label>
-          </div>
-        </li>
-
-        <li>
-          <div class="view">
-            <label>eggs</label>
-          </div>
-        </li>
-
-        <li>
-          <div class="view">
-            <label>brix</label>
-          </div>
-        </li>
+        <% @list.items.each do |item| %>
+          <li>
+            <div class="view">
+              <label><%= item.description %></label>
+            </div>
+          </li>
+        <% end %>
       </ul
 
     </section>

@@ -1,3 +1,3 @@
 class List < ApplicationRecord
-  has_many :td_items
+  has_many :items
 end
