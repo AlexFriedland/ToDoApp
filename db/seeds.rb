@@ -8,6 +8,6 @@
 
 @list = List.create(id: 1, name: "My todo list")
 
-@list << Item.create(list_id: 1, status: 0, description: "Milk")
-@list << Item.create(list_id: 1, status: 0, description: "Eggs")
-@list << Item.create(list_id: 1, status: 0, description: "Brix")
+@list.items << Item.create(list_id: 1, status: 0, description: "Milk")
+@list.items << Item.create(list_id: 1, status: 0, description: "Eggs")
+@list.items << Item.create(list_id: 1, status: 0, description: "Brix")
