@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
 end
 
 
-=begin
+
 
 <input class="toggle" type="checkbox">
 
@@ -11,5 +11,3 @@ $(function(){
     $(this).parents("form")trigger("submit")
   })
 });
-
-=end
