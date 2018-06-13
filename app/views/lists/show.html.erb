@@ -8,9 +8,9 @@
       <!-- see params with raise / inspect, set proper with below  -->
       <!-- nested resources form_for array, see list controller -->
 
-        <%= form_for([@list, @item]) do |f| %>
-      <form action="/lists" method="POST">
-          <%= f.text_field :description, :class => "new-todo"%>
+      <%= form_for([@list, @item]) do |f| %>
+        <form action="/lists" method="POST">
+            <%= f.text_field :description, :class => "new-todo", placeholder: "#{@item.errors.full_messages[0]}" || "Add New Item"%>
           <%= f.submit :style => "display: none" %>
         <% end %>
       </form>

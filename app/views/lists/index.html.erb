@@ -3,7 +3,11 @@
       <h1>Your Lists</h1>
 
 				<%= form_for(List.new) do |f| %>
-					<%= f.text_field :name, :class => "new-todo", :placeholder => "Create New List"%>
+					<% if @list.errors[:name].present? %>
+						<%= f.text_field :name, :class => "new-todo", :placeholder => "#{@list.errors.full_messages[0]}" || "#{@list.errors.full_messages_for(:name)}"%>
+					<% else %>
+						<%= f.text_field :name, :class => "new-todo", :placeholder => "Create New List"%>
+					<% end %>
 					<%= f.submit :style => "display: none" %>
 				<% end %>
 			</form>

@@ -11,5 +11,6 @@
  * It is generally better to create a new file per style scope.
  *
  *= require 'todoapp-base'
+ *= require 'lists'
  *= #require_self ** remove to prevent urself from writing css in application.css
  */

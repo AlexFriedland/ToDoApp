@@ -13,9 +13,12 @@ class ItemsController < ApplicationController
     @list = List.find(params[:list_id])
     #build directly on that parent
     @item = @list.items.build(item_params)
-    @item.save
-    redirect_to list_path(@list)
-    
+
+    if @item.save
+      redirect_to lists_path(@list)
+    else
+      render "lists/show"
+    end
   end
 
   def update
