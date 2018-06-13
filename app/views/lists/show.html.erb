@@ -10,20 +10,22 @@
 
       <%= form_for([@list, @item]) do |f| %>
         <form action="/lists" method="POST">
-            <%= f.text_field :description, :class => "new-todo", placeholder: "#{@item.errors.full_messages[0]}" || "Add New Item"%>
+          <%= f.text_field :description, :class => "new-todo", placeholder: "#{@item.errors.full_messages[0]}" || "Add New Item"%>
           <%= f.submit :style => "display: none" %>
         <% end %>
       </form>
     </header>
     <section class="main">
       <ul class="todo-list">
+
         <% @list.items.each do |item| %>
           <li class="<%= "completed" if item.complete? %>">
             <div class="view">
-              <form action="/">
+              <!-- <% raise item.inspect if item.id.nil? %> -->
+              <%= form_for([@list, item]) do |f| %>
                 <input class="toggle" type="checkbox" <%= "checked='checked'" if item.complete? %>>
-                <input type="submit">
-              </form>
+              <% end %>
+
               <label><%= item.description %></label>
             </div>
           </li>
