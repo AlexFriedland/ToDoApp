@@ -21,7 +21,21 @@ class ItemsController < ApplicationController
     end
   end
 
+  #PATCH - /lists/:list_id/items/:id
   def update
+    @item = item.find(params[:id])
+    @item.update(item_params)
+
+    @item.save
+
+    redirect_to list_path(@item.list)
+
+    #raise params.inspect #the data the form submitted
+    #use data to update item described in url
+  end
+
+  def show
+    render '/lists/show'
   end
 
   private
