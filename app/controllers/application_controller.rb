@@ -3,7 +3,7 @@ end
 
 
 
-
+=begin
 <input class="toggle" type="checkbox">
 
 $(function(){
@@ -11,3 +11,4 @@ $(function(){
     $(this).parents("form")trigger("submit")
   })
 });
+=end
