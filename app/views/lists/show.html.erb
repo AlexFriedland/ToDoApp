@@ -20,7 +20,20 @@
       <input class="toggle-all" type="checkbox">
         <label for="toggle-all">Mark all as complete</label>
           <ul class="todo-list">
-            <% render :collection => @list.items, :partial => "items/item_li" %>
+            <%# RENDERING collection w multiples, individual elements are referred to by name of partial (item_li) %>
+            <%#= render :collection => @list.items, :partial => "items/item_li", :as => :item %>
+
+            <% @list.items.each do |item| %>
+              <li>
+                <form>
+                    <div class="view">
+
+                    <input class="toggle" type="checkbox" checked="">
+                    <label><%= item.description %></label>
+                  </form>
+                </div>
+              </li>
+            <% end %>
               <%# @list.items.each do |item| %>
                 <%#= render "items/item_li", item: item %>
               <%# end %>

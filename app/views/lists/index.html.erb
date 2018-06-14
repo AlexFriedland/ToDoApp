@@ -4,7 +4,10 @@
 
 				<%= form_for(List.new) do |f| %>
 					<% if @list.errors[:name].present? %>
-						<%= f.text_field :name, :class => "new-todo", :placeholder => "#{@list.errors.full_messages[0]}" || "#{@list.errors.full_messages_for(:name)}"%>
+
+							<%= f.text_field :name, :class => "new-todo", :placeholder => "#{@list.errors.full_messages[0]}" || "#{@list.errors.full_messages_for(:name)}"%>
+
+
 					<% else %>
 						<%= f.text_field :name, :class => "new-todo", :placeholder => "Create New List"%>
 					<% end %>

@@ -1,11 +1,10 @@
 
-<%= content_tag_for :li, item_li, class: li_class_for_item(item_li) do %>
+<%= content_tag_for :li, item, class: li_class_for_item(item) do %>
   <div class="view">
 
-    <%= form_for([@list, item_li]) do |f| %>
-      <%= f.check_box :status, :class => "toggle", :checked => item_li.complete? %>
+    <%= form_for([@list, item]) do |f| %>
+      <%= f.check_box :status, :class => "toggle", :checked => item.complete? %>
     <% end %>
-
-    <label><%= item_li.description %></label>
+    <label><%= item.description %></label>
   </div>
 <% end %>

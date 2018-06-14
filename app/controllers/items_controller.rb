@@ -13,7 +13,6 @@ class ItemsController < ApplicationController
     @list = List.find(params[:list_id])
     #build directly on that parent
     @item = @list.items.build(item_params)
-
     if @item.save
       redirect_to lists_path(@list)
     else
@@ -26,7 +25,7 @@ class ItemsController < ApplicationController
     raise params.inspect
     @item = Item.find(params[:id])
     @item.update(item_params)
-    
+
     #@item.status = params[:item][:status]
     #@item.save
 

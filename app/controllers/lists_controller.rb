@@ -24,8 +24,7 @@ class ListsController < ApplicationController
     if @list.save
       redirect_to list_url(@list)
     else
-      flash.alert = "You must be logged in"
-      flash[:warning] = "List not saved bc: #{@list.errors.full_messages[0]}"
+
       @lists = List.all
       render 'index'
 
