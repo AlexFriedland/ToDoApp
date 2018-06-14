@@ -8,7 +8,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       #wire schema / db
       #wire model
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end
