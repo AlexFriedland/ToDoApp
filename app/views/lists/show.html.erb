@@ -1,49 +1,21 @@
-
-  <section class="todoapp">
-    <header class="header">
-      <h1><%= @list.name %></h1>
-
-      <!--  -->
-
-      <!-- see params with raise / inspect, set proper with below  -->
-      <!-- nested resources form_for array, see list controller -->
-
-      <%= form_for([@list, @item]) do |f| %>
-        <form action="/lists" method="POST">
-          <%= f.text_field :description, :class => "new-todo", placeholder: "#{@item.errors.full_messages[0]}" || "Add New Item"%>
-          <%= f.submit :style => "display: none" %>
-        <% end %>
-      </form>
-    </header>
-
-    <section class="main">
-      <input class="toggle-all" type="checkbox">
-        <label for="toggle-all">Mark all as complete</label>
-          <ul class="todo-list">
-            <%# RENDERING collection w multiples, individual elements are referred to by name of partial (item_li) %>
-            <%#= render :collection => @list.items, :partial => "items/item_li", :as => :item %>
-
-            <% @list.items.each do |item| %>
-              <li>
-                <form>
-                    <div class="view">
-
-                    <input class="toggle" type="checkbox" checked="">
-                    <label><%= item.description %></label>
-                  </form>
-                </div>
-              </li>
-            <% end %>
-              <%# @list.items.each do |item| %>
-                <%#= render "items/item_li", item: item %>
-              <%# end %>
-          </ul>
-        </section>
-
-        <footer class="footer">
-        </footer>
-
-      </section>
+<section class="todoapp">
+  <header class="header">
+    <h1><%= @list.name %></h1>
+    <%= form_for([@list, @item]) do |f| %>
+      <%= f.text_field :description, :class => "new-todo", :placeholder => (@item.errors.full_messages_for(:description).first || "Enter a new item...") %>
+      <%= f.submit :style => "display: none" %>
+    <% end %>
+  </header>
+  <section class="main">
+    <input class="toggle-all" type="checkbox">
+    <label for="toggle-all">Mark all as complete</label>
+    <ul class="todo-list">
+      <%= render :collection => @list.items, :partial => "items/item_li", :as => :item %>
+    </ul>
+  </section>
+  <footer class="footer">
+  </footer>
+</section>
 
 
 

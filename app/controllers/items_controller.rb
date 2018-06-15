@@ -9,10 +9,8 @@ class ItemsController < ApplicationController
   end
 
   def create
-    #find the parents first
-    @list = List.find(params[:list_id])
-    #build directly on that parent
-    @item = @list.items.build(item_params)
+    @list = List.find(params[:list_id]) #find the parents first
+    @item = @list.items.build(item_params) #build directly on that parent
     if @item.save
       redirect_to lists_path(@list)
     else
@@ -22,7 +20,6 @@ class ItemsController < ApplicationController
 
   #PATCH - /lists/:list_id/items/:id
   def update
-    raise params.inspect
     @item = Item.find(params[:id])
     @item.update(item_params)
 
@@ -35,9 +32,9 @@ class ItemsController < ApplicationController
     #use data to update item described in url
   end
 
-  def show
-    render '/lists/show'
-  end
+  # def show
+  #   render '/lists/show'
+  # end
 
   private
 
