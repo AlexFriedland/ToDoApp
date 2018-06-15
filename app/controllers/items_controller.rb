@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
     @list = List.find(params[:list_id]) #find the parents first
     @item = @list.items.build(item_params) #build directly on that parent
     if @item.save
-      redirect_to lists_path(@list)
+      redirect_to list_path(@item.list)
     else
       render "lists/show"
     end
@@ -35,6 +35,13 @@ class ItemsController < ApplicationController
   # def show
   #   render '/lists/show'
   # end
+
+  def destroy
+    #invalid authenticity token - form insecure - CSRF
+    @item = Item.find(params[:id])
+    @item.destroy
+    redirect_to list_path(@item.list)
+  end
 
   private
 

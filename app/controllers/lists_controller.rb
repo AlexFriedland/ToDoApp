@@ -9,7 +9,7 @@ class ListsController < ApplicationController
   end
 
   def show
-    @list = List.find_by(id: params[:id])
+    @list = List.find(params[:id])
     #used to be this below but changed to Item.new BC it was in memory when the
     #page loaded and wasn't allowing proper routes bc it was a blank @item
     #@item = @list.items.build
