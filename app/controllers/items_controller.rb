@@ -12,7 +12,12 @@ class ItemsController < ApplicationController
     @list = List.find(params[:list_id]) #find the parents first
     @item = @list.items.build(item_params) #build directly on that parent
     if @item.save
-      redirect_to list_path(@item.list)
+      respond_to do |f|
+        # ORDER WORKS
+        f.html {redirect_to list_path(@list)}
+        f.json {render :json => @list}
+      end
+
     else
       render "lists/show"
     end
