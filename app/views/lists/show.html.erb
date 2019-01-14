@@ -1,5 +1,7 @@
+
 <section class="todoapp">
   <header class="header">
+
     <h1><%= @list.name %></h1>
     <%= form_for([@list, @item]) do |f| %>
       <%= f.text_field :description, :class => "new-todo", :placeholder => (@item.errors.full_messages_for(:description).first || "Enter a new item...") %>

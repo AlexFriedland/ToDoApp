@@ -1,4 +1,4 @@
-$(function(){
+$(document).ready(function(){
 
   $("form#new_item").on("submit", function(e){
     console.log("stop")
