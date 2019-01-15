@@ -14,8 +14,8 @@ class ItemsController < ApplicationController
     if @item.save
       respond_to do |f|
         # ORDER WORKS
+        f.json {render :json => @item}
         f.html {redirect_to list_path(@list)}
-        f.json {render :json => @list}
       end
 
     else
