@@ -1,12 +1,18 @@
 // define proto Item
 function Item(attributes){
-  this.description = attributes.name;
+  this.description = attributes.description;
   this.id = attributes.id;
 }
 
-// use handlebars 
-Item.prototype.renderLI = function(){
+$(function(){
+  Item.templateSource = $("#item-template").html()
+  Item.template = Handlebars.compile(Item.templateSource)
+})
 
+// Item.template({description: "New List Item"}) //=> returns LI with everything-
+
+Item.prototype.renderLI = function(){
+  return Item.template(this)
 }
 
 $(function(){
@@ -29,10 +35,9 @@ $(function(){
     .success(function(json){
       //get back json of object created
 
-      var item = new Item(json)
-      itemLi = item.renderLI()
+      var item = new Item(json);
+      var itemLi = item.renderLI()
       $("ul.todo-list").append(itemLi)
-
       // w this we'd have to make a huge html string to inject into the DOM
       // html = ""
       // html += "<li>" + json.description + "</li>"

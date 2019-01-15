@@ -19,56 +19,6 @@
   </footer>
 </section>
 
-<script id="item-template" type="text/x-handlebars-template">
-  <div class="empty">
-    <h1>{{title}}</h1>
-    <div class="body">
-      {{body}}
-    </div>
-  </div>
-</script>
-
-<script id="entry-template" type="text/x-handlebars-template">
-  <div class="entry">
-    <h1>{{title}}</h1>
-    <div class="body">
-      {{body}}
-    </div>
-  </div>
-</script>
-
-
-
-
-<!-- CODE NOT WORKING - checkbox not appearing
-
-
-
-    <section class="main">
-      <ul class="todo-list">
-
-        <% @list.items.each do |item| %>
-          <li class="<%= "completed" if item.complete? %>">
-            <div class="view">
-              <%= form_for([@list, item]) do |f| %>
-                <%= f.check_box :status, :class => "toggle", :checked => (true if item.complete?) %>
-              <% end %>
-
-              <label><%= item.description %></label>
-            </div>
-          </li>
-        <% end %>
-
-      </ul
-
-    </section>
-    <footer class="footer" style="display: none;">
-      <span class="todo-count"><strong>0</strong> items left</span>
-
-      <button class="clear-completed" style="display: none;"></button>
-    </footer>
-  </section>
--->
 
 <script id="item-template" type="text/x-handlebars-template">
   <li class="item" id="item_{{id}}">
