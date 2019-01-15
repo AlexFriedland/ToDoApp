@@ -6,13 +6,23 @@ function Item(attributes){
 
 $(function(){
   Item.templateSource = $("#item-template").html()
-  Item.template = Handlebars.compile(Item.templateSource)
+  Item.template = Handlebars.compile(Item.templateSource);
 })
 
 // Item.template({description: "New List Item"}) //=> returns LI with everything-
 
 Item.prototype.renderLI = function(){
   return Item.template(this)
+}
+
+Item.success = function(json){
+  var item = new Item(json);
+  var itemLi = item.renderLI()
+  $("ul.todo-list").append(itemLi)
+}
+
+Item.error = function(){
+  console.log("ERROR", response)
 }
 
 $(function(){
@@ -32,19 +42,7 @@ $(function(){
       dataType: "json",
       method: "POST"
     })
-    .success(function(json){
-      //get back json of object created
-
-      var item = new Item(json);
-      var itemLi = item.renderLI()
-      $("ul.todo-list").append(itemLi)
-      // w this we'd have to make a huge html string to inject into the DOM
-      // html = ""
-      // html += "<li>" + json.description + "</li>"
-      // $("ul.todo-list").append(html)
-
-    }).error(function(response){
-      console.log("ERROR", response)
-    })
+    .success(Item.success)
+    .error(Item.error)
   })
 })
